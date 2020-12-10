@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.data.schoolname
+package com.example.schoolmealsapp.data.model.schoolname
 
 data class Sc(
     val a_sc_code: String,

@@ -1,6 +1,6 @@
-package com.example.schoolmealsapp.retrofit
+package com.example.schoolmealsapp.data.retrofit
 
-import com.example.schoolmealsapp.data.schoolname.SchoolNameData
+import com.example.schoolmealsapp.data.model.schoolname.SchoolNameData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

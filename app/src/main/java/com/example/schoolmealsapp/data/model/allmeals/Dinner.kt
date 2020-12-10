@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.data.meals
+package com.example.schoolmealsapp.data.model.allmeals
 
 data class Dinner(
     val NTR: String,

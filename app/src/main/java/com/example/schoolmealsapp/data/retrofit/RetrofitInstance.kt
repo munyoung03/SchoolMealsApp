@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.retrofit
+package com.example.schoolmealsapp.data.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
