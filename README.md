@@ -1,2 +1,2 @@
 # SchoolMealsApp
-MVVM패턴을 사용한 급식 어플
+clean architecture를 사용 급식 어플
