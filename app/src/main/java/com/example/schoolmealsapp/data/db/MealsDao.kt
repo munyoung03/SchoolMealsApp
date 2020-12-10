@@ -10,11 +10,11 @@ import com.example.schoolmealsapp.data.model.meals.MealsData
 interface MealsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMeals(meals : List<MealsData>)
+    suspend fun saveMeals(meals : MealsData)
 
     @Query("DELETE FROM meals")
     suspend fun deleteAllMeals()
 
     @Query("SELECT * FROM meals")
-    suspend fun getMeals() : List<MealsData>
+    suspend fun getMeals() : MealsData
 }
