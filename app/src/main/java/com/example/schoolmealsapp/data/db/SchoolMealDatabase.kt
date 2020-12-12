@@ -4,14 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.schoolmealsapp.data.model.allmeals.AllMealsData
-import com.example.schoolmealsapp.data.model.meals.MealsData
-import com.example.schoolmealsapp.data.model.schoolname.SchoolNameData
-
-@Database(entities = [SchoolNameData::class, MealsData::class, AllMealsData::class], version = 1, exportSchema = false)
+import androidx.room.TypeConverters
+import com.example.schoolmealsapp.data.model.allmeals.*
+import com.example.schoolmealsapp.data.model.schoolname.Sc
+@TypeConverters(BreakfastConverter::class, LunchConverter::class, DinnerConverter::class)
+@Database(entities = [Sc::class, AllMeals::class], version = 2, exportSchema = false)
 abstract class SchoolMealDatabase : RoomDatabase(){
     abstract fun schoolNameDao(): SchoolNameDao
-    abstract fun mealsDao(): MealsDao
     abstract fun allMealsDao(): AllMealsDao
     companion object{
         @Volatile
@@ -25,7 +24,8 @@ abstract class SchoolMealDatabase : RoomDatabase(){
                         context.applicationContext,
                         SchoolMealDatabase::class.java,
                         "meals_data_base"
-                    ).build()
+                    )
+                        .fallbackToDestructiveMigration().build()
                 }
                 return instance
             }
