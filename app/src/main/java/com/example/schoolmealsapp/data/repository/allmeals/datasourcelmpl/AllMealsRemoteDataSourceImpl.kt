@@ -1,5 +1,6 @@
 package com.example.schoolmealsapp.data.repository.allmeals.datasourcelmpl
 
+import androidx.room.PrimaryKey
 import com.example.schoolmealsapp.data.api.MealsService
 import com.example.schoolmealsapp.data.model.allmeals.AllMeals
 import com.example.schoolmealsapp.data.model.allmeals.AllMealsData
@@ -11,7 +12,7 @@ class AllMealsRemoteDataSourceImpl(
     private val adCode: String,
     private val scCode: String,
     private val start: String,
-    private val end: String
+    private val end: String,
 ) :
     AllMealsRemoteDataSource {
     override suspend fun getAllMeals(): Response<AllMealsData> = mealsService.getAllMeals(adCode, scCode, start, end)

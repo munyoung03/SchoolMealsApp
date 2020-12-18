@@ -12,23 +12,4 @@ import com.example.schoolmealsapp.data.model.schoolname.Sc
 abstract class SchoolMealDatabase : RoomDatabase(){
     abstract fun schoolNameDao(): SchoolNameDao
     abstract fun allMealsDao(): AllMealsDao
-    companion object{
-        @Volatile
-        private var INSTANCE : SchoolMealDatabase? = null
-        fun getInstance(context: Context):SchoolMealDatabase{
-            synchronized(this){
-                var instance = INSTANCE
-                if(instance == null)
-                {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        SchoolMealDatabase::class.java,
-                        "meals_data_base"
-                    )
-                        .fallbackToDestructiveMigration().build()
-                }
-                return instance
-            }
-        }
-    }
 }
