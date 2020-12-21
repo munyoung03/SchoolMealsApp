@@ -1,8 +1,7 @@
-package com.example.schoolmealsapp.domain.di.core
+package com.example.schoolmealsapp.presentation.di.core
 
 import android.content.Context
 import androidx.room.Room
-import com.example.schoolmealsapp.data.api.MealsService
 import com.example.schoolmealsapp.data.db.AllMealsDao
 import com.example.schoolmealsapp.data.db.SchoolMealDatabase
 import com.example.schoolmealsapp.data.db.SchoolNameDao

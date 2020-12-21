@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.presentation
+package com.example.schoolmealsapp.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +20,7 @@ import com.example.schoolmealsapp.domain.usecase.GetSchoolNameUseCase
 class MainViewModel(private val getSchoolNameUseCase: GetSchoolNameUseCase) : ViewModel(){
 
     fun getSchoolName() = liveData{
-        val schoolNameList = getSchoolNameUseCase.execute()
+        val schoolNameList = getSchoolNameUseCase.execute("대구소프트웨어고등학교")
         emit(schoolNameList)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.domain.di.core
+package com.example.schoolmealsapp.presentation.di.core
 
 import com.example.schoolmealsapp.data.api.MealsService
 import com.example.schoolmealsapp.data.repository.allmeals.datasource.AllMealsRemoteDataSource
@@ -11,22 +11,17 @@ import javax.inject.Singleton
 
 @Module
 class RemoteDataModule(
-    private val name: String,
-    private val adCode: String,
-    private val scCode: String,
-    private val start: String,
-    private val end: String
 ) {
 
     @Singleton
     @Provides
     fun provideSchoolNameRemoteDataSource(mealsService: MealsService): SchoolNameRemoteDataSource {
-        return SchoolNameRemoteDataSourceImpl(mealsService, name)
+        return SchoolNameRemoteDataSourceImpl(mealsService)
     }
 
     @Singleton
     @Provides
     fun provideAllMealRemoteDataSource(mealsService: MealsService): AllMealsRemoteDataSource {
-        return AllMealsRemoteDataSourceImpl(mealsService, adCode, scCode, start, end)
+        return AllMealsRemoteDataSourceImpl(mealsService)
     }
 }

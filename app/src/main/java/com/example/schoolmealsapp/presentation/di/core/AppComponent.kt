@@ -1,5 +1,6 @@
-package com.example.schoolmealsapp.domain.di.core
+package com.example.schoolmealsapp.presentation.di.core
 
+import com.example.schoolmealsapp.presentation.di.schoolname.SchoolNameSubComponent
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,4 +16,5 @@ import javax.inject.Singleton
     CacheDataModule::class
 ])
 interface AppComponent {
+    fun schoolNameSubComponent() : SchoolNameSubComponent.Factory
 }

@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.presentation
+package com.example.schoolmealsapp.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

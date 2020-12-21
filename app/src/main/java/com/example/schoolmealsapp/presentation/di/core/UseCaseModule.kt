@@ -1,4 +1,4 @@
-package com.example.schoolmealsapp.domain.di.core
+package com.example.schoolmealsapp.presentation.di.core
 
 import com.example.schoolmealsapp.domain.repository.SchoolNameRepository
 import com.example.schoolmealsapp.domain.usecase.GetSchoolNameUseCase

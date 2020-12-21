@@ -1,5 +1,6 @@
-package com.example.schoolmealsapp.domain.di.core
+package com.example.schoolmealsapp.presentation.di.core
 
+import com.example.schoolmealsapp.data.db.SchoolMealDatabase
 import com.example.schoolmealsapp.data.repository.allmeals.AllMealsRepositoryImpl
 import com.example.schoolmealsapp.data.repository.allmeals.datasource.AllMealsCacheDataSource
 import com.example.schoolmealsapp.data.repository.allmeals.datasource.AllMealsLocalDataSource
@@ -37,12 +38,14 @@ class RepositoryModule {
     fun provideAllMealsRepository(
         allMealsRemoteDataSource: AllMealsRemoteDataSource,
         allMealsLocalDataSource: AllMealsLocalDataSource,
-        allMealsCacheDataSource: AllMealsCacheDataSource
+        allMealsCacheDataSource: AllMealsCacheDataSource,
+        mealsDatabase: SchoolMealDatabase
     ) : AllMealsRepository {
         return AllMealsRepositoryImpl(
             allMealsLocalDataSource,
             allMealsRemoteDataSource,
-            allMealsCacheDataSource
+            allMealsCacheDataSource,
+            mealsDatabase
         )
     }
 }
