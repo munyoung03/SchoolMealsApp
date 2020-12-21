@@ -14,14 +14,14 @@ class SchoolNameRepositoryImpl(
     private val schoolNameCacheDataSource: SchoolNameCacheDataSource
 ) : SchoolNameRepository {
     
-    override suspend fun getSchoolName(): List<Sc> {
-        return getSchoolNameFromCache()
+    override suspend fun getSchoolName(name : String): List<Sc> {
+        return getSchoolNameFromCache(name)
     }
 
-    suspend fun getSchoolNameFromAPI() : List<Sc> {
+    suspend fun getSchoolNameFromAPI(name : String) : List<Sc> {
         lateinit var schoolNameList : List<Sc>
         try{
-            val response = schoolNameRemoteDataSource.getSchoolName()
+            val response = schoolNameRemoteDataSource.getSchoolName(name)
             val body = response.body()
             if(body != null){
                 schoolNameList = body.data.sc_list
@@ -32,7 +32,7 @@ class SchoolNameRepositoryImpl(
         return schoolNameList
     }
 
-    suspend fun getSchoolNameFromDB() : List<Sc> {
+    suspend fun getSchoolNameFromDB(name : String) : List<Sc> {
         lateinit var schoolNameList : List<Sc>
         try{
             schoolNameList = schoolNameLocalDataSource.getSchoolNameFromDB()
@@ -43,13 +43,13 @@ class SchoolNameRepositoryImpl(
         if(schoolNameList.size > 0){
             return schoolNameList
         }else{
-            schoolNameList = getSchoolNameFromAPI()
+            schoolNameList = getSchoolNameFromAPI(name)
             schoolNameLocalDataSource.saveSchoolNameToDB(schoolNameList)
         }
         return schoolNameList
     }
 
-    suspend fun getSchoolNameFromCache() : List<Sc> {
+    suspend fun getSchoolNameFromCache(name : String) : List<Sc> {
         lateinit var schoolNameList : List<Sc>
         try{
             schoolNameList = schoolNameCacheDataSource.getSchoolNameFromCache()
@@ -60,7 +60,7 @@ class SchoolNameRepositoryImpl(
         if(schoolNameList.size > 0){
             return schoolNameList
         }else{
-            schoolNameList = getSchoolNameFromDB()
+            schoolNameList = getSchoolNameFromDB(name)
             schoolNameCacheDataSource.saveSchoolNameToCache(schoolNameList)
         }
         return schoolNameList

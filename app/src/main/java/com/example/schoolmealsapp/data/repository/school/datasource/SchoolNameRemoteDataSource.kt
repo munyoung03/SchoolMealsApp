@@ -5,5 +5,5 @@ import com.example.schoolmealsapp.data.model.schoolname.SchoolNameData
 import retrofit2.Response
 
 interface SchoolNameRemoteDataSource {
-    suspend fun getSchoolName(): Response<SchoolNameData>
+    suspend fun getSchoolName(name : String): Response<SchoolNameData>
 }

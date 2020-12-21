@@ -7,8 +7,8 @@ import com.example.schoolmealsapp.data.model.schoolname.SchoolNameData
 import com.example.schoolmealsapp.data.repository.school.datasource.SchoolNameRemoteDataSource
 import retrofit2.Response
 
-class SchoolNameRemoteDataSourceImpl(private val mealsService: MealsService, private val name: String) :
+class SchoolNameRemoteDataSourceImpl(private val mealsService: MealsService) :
     SchoolNameRemoteDataSource {
-    override suspend fun getSchoolName(): Response<SchoolNameData> = mealsService.getSchoolName(name)
+    override suspend fun getSchoolName(name: String): Response<SchoolNameData> = mealsService.getSchoolName(name)
 
 }
